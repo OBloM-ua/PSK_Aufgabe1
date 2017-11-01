@@ -18,9 +18,9 @@ public class FahrzeugClient {
 					break;
 
 				case "add":
-					if (args.length != 9 && args[2].equals("pkw"))
+					if (args.length != 9 && args[2].equals("pkw")) {
 						throw new Exception("Error: Parameter ungueltig.");
-
+					}
 					if (args.length != 8 && args[2].equals("lkw"))
 						throw new Exception("Error: Parameter ungueltig.");
 
@@ -42,13 +42,13 @@ public class FahrzeugClient {
 					else if (args[2].equals("lkw")) System.out.println(fm.sizeOfLkw());
 					break;
 
-				case "meanprice"://Durchschnittspreis aller Fahrzeuge berechnen
+				case "meanprice":
 					if (args.length != 2)
 						throw new IllegalArgumentException("Arguments ist Falsh!");
 					System.out.println(fm.priceAvg());
 					break;
 
-				case "oldest": //Ältest(e) Fahrzeug(e) suchen
+				case "oldest":
 					if (args.length != 2)
 						throw new IllegalArgumentException("Arguments ist Falsh!");
 					System.out.println(fm.getOldestFahrzeugId());

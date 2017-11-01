@@ -37,9 +37,10 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
 
     private void saveData() {
         try {
+
+
             File outFile = new File(filePath);
-            if (outFile.getParentFile() != null)
-                outFile.getParentFile().mkdirs();
+            if (outFile.getParentFile() != null) outFile.getParentFile().mkdirs();
 
             FileOutputStream fileOutputStream = new FileOutputStream(filePath);
             ObjectOutputStream os = new ObjectOutputStream(fileOutputStream);
@@ -69,6 +70,13 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
 
     @Override
     public void speichereFahrzeug(Fahrzeug fahrzeug) {
+
+        for (Fahrzeug f : fahrzeugList) {
+            if (f.getId() == fahrzeug.getId()){
+                throw new IllegalArgumentException("Error: Fahrzeug schon existiert. (id=<" + fahrzeug.getId() + ">)");
+            }
+        }
+
         fahrzeugList.add(fahrzeug);
         saveData();
     }
@@ -80,9 +88,10 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
             if (f.getId() == id)
                 fahrzeug = f;
         }
+        if (fahrzeug == null){
+            throw new IllegalArgumentException("Error: Fahrzeug nicht vorhanden. (id=<" + id + ">)");
+        }
 
-//        if (fahrzeug == null)
-//            throw new Exception("Error: Fahrzeug nicht vorhanden. (id=<" + id + ">)");
         fahrzeugList.remove(fahrzeug);
         saveData();
     }
