@@ -1,7 +1,6 @@
 import java.io.*;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Oleh Baidiuk
@@ -10,7 +9,7 @@ import java.util.Set;
 
 public class SerializedFahrzeugDAO implements FahrzeugDAO {
     private String filePath;
-    private Set<Fahrzeug> fahrzeugSet;
+    private ArrayList<Fahrzeug> fahrzeugList;
 
     public SerializedFahrzeugDAO(String filePath) {
         this.filePath = filePath;
@@ -23,7 +22,7 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
             try {
                 FileInputStream fileInputStream = new FileInputStream(filePath);
                 ObjectInputStream os = new ObjectInputStream(fileInputStream);
-                fahrzeugSet = (HashSet<Fahrzeug>) os.readObject();
+                fahrzeugList = (ArrayList<Fahrzeug>) os.readObject();
                 os.close();
                 fileInputStream.close();
             } catch (Exception e) {
@@ -32,7 +31,7 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
             }
         else {
             System.out.println("file<" + filePath + "> was not founded, will be create new one");
-            fahrzeugSet = new HashSet<>();
+            fahrzeugList = new ArrayList<>();
         }
     }
 
@@ -44,7 +43,7 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
 
             FileOutputStream fileOutputStream = new FileOutputStream(filePath);
             ObjectOutputStream os = new ObjectOutputStream(fileOutputStream);
-            os.writeObject(fahrzeugSet);
+            os.writeObject(fahrzeugList);
             os.close();
             fileOutputStream.close();
             System.out.println("Serialisierung erfolgreich");
@@ -57,34 +56,34 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
 
     @Override
     public List<Fahrzeug> getFahrzeugList() {
-        return fahrzeugSet;
+        return fahrzeugList;
     }
 
     @Override
     public Fahrzeug getFahrzeugbyId(int id) {
-        for (Fahrzeug fahrzeug : fahrzeugSet)
+        for (Fahrzeug fahrzeug : fahrzeugList)
             if (fahrzeug.getId() == id)
                 return fahrzeug;
         return null;
     }
 
     @Override
-    public void speichereFahrzeug(Fahrzeug fahrzeug) throws Exception {
-        if (fahrzeugSet.contains(fahrzeug))
-            throw new Exception("Error: Fahrzeug bereits vorhanden. (id=<" + fahrzeug.getId() + ">)");
-        fahrzeugSet.add(fahrzeug);
+    public void speichereFahrzeug(Fahrzeug fahrzeug) {
+        fahrzeugList.add(fahrzeug);
         saveData();
     }
 
     @Override
-    public void loescheFahrzeug(int id) throws Exception {
+    public void loescheFahrzeug(int id) {
         Fahrzeug fahrzeug = null;
-        for (Fahrzeug f : fahrzeugSet)
+        for (Fahrzeug f : fahrzeugList) {
             if (f.getId() == id)
                 fahrzeug = f;
-        if (fahrzeug == null)
-            throw new Exception("Error: Fahrzeug nicht vorhanden. (id=<" + id + ">)");
-        fahrzeugSet.remove(fahrzeug);
+        }
+
+//        if (fahrzeug == null)
+//            throw new Exception("Error: Fahrzeug nicht vorhanden. (id=<" + id + ">)");
+        fahrzeugList.remove(fahrzeug);
         saveData();
     }
 }
