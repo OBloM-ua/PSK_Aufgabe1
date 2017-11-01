@@ -1,6 +1,6 @@
 /**
- * @author <your-name-here>
- * Matrikelnummer:
+ * @author Oleh Baidiuk
+ * Matrikelnummer: 01468936
  */
 
 import java.util.List;

@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author <your-name-here>
- * Matrikelnummer:
+ * @author Oleh Baidiuk
+ * Matrikelnummer: 01468936
  */
 
 public class SerializedFahrzeugDAO implements FahrzeugDAO {

@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 
 /**
- * @author <your-name-here>
- * Matrikelnummer:
+ * @author Oleh Baidiuk
+ * Matrikelnummer: 01468936
  */
 
 public class FahrzeugManagement {
@@ -20,16 +19,11 @@ public class FahrzeugManagement {
 
     }
 
-    /**
-     * Alle Daten eines Fahrzeugs bereitstellen
-     */
     public void print(int i) {
         System.out.println(dao.getFahrzeugbyId(i));
     }
 
-    /**
-     * Neues Fahrzeug hinzufügen
-     */
+
     public void add(Fahrzeug f) {
         try {
             dao.speichereFahrzeug(f);
@@ -38,9 +32,6 @@ public class FahrzeugManagement {
         }
     }
 
-    /**
-     * Bestehendes Fahrzeug löschen
-     */
     public void delete(int i) {
         try {
             dao.loescheFahrzeug(i);
@@ -49,16 +40,12 @@ public class FahrzeugManagement {
         }
     }
 
-    /**
-     * Gesamtzahl aller Fahrzeuge ermitteln
-     */
+
     public int size() {
         return dao.getFahrzeugList().size();
     }
 
-    /**
-     * Gesamtzahl aller PKWs ermitteln
-     */
+
     public int sizeOfPkw() {
         int counter = 0;
         for (Fahrzeug f : dao.getFahrzeugList())
@@ -66,9 +53,6 @@ public class FahrzeugManagement {
         return counter;
     }
 
-    /**
-     * Gesamtzahl aller LKWs ermitteln
-     */
     public int sizeOfLkw() {
         int counter = 0;
         for (Fahrzeug f : dao.getFahrzeugList())
@@ -76,9 +60,6 @@ public class FahrzeugManagement {
         return counter;
     }
 
-    /**
-     * Durchschnittspreis aller Fahrzeuge ermitteln
-     */
     public double priceAvg() {
         double meanprice;
         double counter = 0;
@@ -88,9 +69,6 @@ public class FahrzeugManagement {
         return meanprice;
     }
 
-    /**
-     * Id(s) des(r) ältesten Fahrzeugs(e) ermitteln
-     */
     public List<Integer> getOldestFahrzeugId() {
         if (dao.getFahrzeugList().isEmpty()) {
             System.err.println("You have no Fahrzeug!");
