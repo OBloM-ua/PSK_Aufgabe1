@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -64,9 +65,9 @@ public class FahrzeugManagement {
         double meanprice;
         double counter = 0;
         for (Fahrzeug f : dao.getFahrzeugList())
-            counter += f.getGrundpreis();
+            counter += f.getPreis();
         meanprice = counter / dao.getFahrzeugList().size();
-        return meanprice;
+        return BigDecimal.valueOf(meanprice).setScale(2,BigDecimal.ROUND_HALF_DOWN).doubleValue();
     }
 
     public List<Integer> getOldestFahrzeugId() {
@@ -83,11 +84,4 @@ public class FahrzeugManagement {
         }
         return retList;
     }
-
-
-    @Deprecated
-    public List<Fahrzeug> getAll() {// only for JunitTest
-        return dao.getFahrzeugList();
-    }
-
 }

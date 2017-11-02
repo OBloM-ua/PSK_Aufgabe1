@@ -20,6 +20,11 @@ public abstract class Fahrzeug implements Serializable {
 
 	public static DecimalFormat df = getDecimalFormat();
 	public static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    public static DecimalFormat getDecimalFormat() {
+        DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
+        dfs.setDecimalSeparator('.');
+        return new DecimalFormat("0.00", dfs);
+    }
 
 	public Fahrzeug(int id, String marke, String modell, int baujahr, double grundpreis) throws Exception {
 		setId(id);
@@ -80,15 +85,12 @@ public abstract class Fahrzeug implements Serializable {
 	}
 
 	double getPreis() {
-		return getGrundpreis() - getRabatt();
+		double result = getGrundpreis() - getRabatt();
+		return result;
 	}
 
 
-	public static DecimalFormat getDecimalFormat() {
-		DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
-		dfs.setDecimalSeparator('.');
-		return new DecimalFormat("0.00", dfs);
-	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;

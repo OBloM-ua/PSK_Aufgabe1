@@ -30,7 +30,6 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
                 System.exit(1);
             }
         else {
-            System.out.println("file<" + filePath + "> was not founded, will be create new one");
             fahrzeugList = new ArrayList<>();
         }
     }
@@ -47,9 +46,7 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
             os.writeObject(fahrzeugList);
             os.close();
             fileOutputStream.close();
-            System.out.println("Serialisierung erfolgreich");
         } catch (Exception e) {
-            System.err.println("Fehler bei Serialisierung:");
             e.printStackTrace();
             System.exit(1);
         }

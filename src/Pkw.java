@@ -32,13 +32,13 @@ public class Pkw extends Fahrzeug {
 
 	@Override
 	public String toString() {
-		return "Typ: PKW \n" +
-				"Id: " + getId() + "\n"+
-				"Marke: " + getMarke() + '\n' +
-				"Modell: " + getModell() + '\n' +
-				"Baujahr: " + getBaujahr() +"\n"+
-				"Grundpreis: " + df.format(getGrundpreis()) + "\n"+
+		return "Typ:         PKW\n" +
+				"Id:          " + getId() + "\n"+
+				"Marke:       " + getMarke() + '\n' +
+				"Modell:      " + getModell() + '\n' +
+				"Baujahr:     " + getBaujahr() +"\n"+
+				"Grundpreis:  " + df.format(getGrundpreis()) + "\n"+
 				"Servicejahr: " + getServicejahr() + "\n"+
-				"Price: " + getPreis() + "\n";
+				"Preis:       " + df.format(getPreis()) + "\n";
 	}
 }
