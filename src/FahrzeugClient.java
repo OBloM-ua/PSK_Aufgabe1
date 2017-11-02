@@ -32,13 +32,12 @@ public class FahrzeugClient {
                     } else if (args[2].equals("lkw")) {
                         Lkw lkw = new Lkw(Integer.parseInt(args[3]), args[4], args[5], Integer.parseInt(args[6]), Double.parseDouble(args[7]));
                         fm.add(lkw);
-                    }else {
+                    } else {
                         throw new IllegalArgumentException("Error: Parameter ungueltig.");
                     }
                     break;
                 case "del":
                     if (args.length != 3) throw new IllegalArgumentException("Arguments ist Falsh!");
-
                     fm.delete(Integer.parseInt(args[2]));
                     break;
                 case "count":
@@ -54,7 +53,7 @@ public class FahrzeugClient {
                 case "oldest":
                     if (args.length != 2)
                         throw new IllegalArgumentException("Arguments ist Falsh!");
-                    for(int i: fm.getOldestFahrzeugId())
+                    for (int i : fm.getOldestFahrzeugId())
                         System.out.println("Id: " + i);
                     break;
             }

@@ -37,7 +37,7 @@ public class FahrzeugManagement {
         try {
             dao.loescheFahrzeug(i);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error: Fahrzeug nicht vorhanden. (id=" + i + ")");
         }
     }
 

@@ -81,6 +81,7 @@ public class SerializedFahrzeugDAO implements FahrzeugDAO {
     @Override
     public void loescheFahrzeug(int id) {
         Fahrzeug fahrzeug = null;
+
         for (Fahrzeug f : fahrzeugList) {
             if (f.getId() == id)
                 fahrzeug = f;
