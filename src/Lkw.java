@@ -28,6 +28,6 @@ public class Lkw extends Fahrzeug {
 				"Modell:      " + getModell() + '\n' +
 				"Baujahr:     " + getBaujahr() +"\n"+
 				"Grundpreis:  " + df.format(getGrundpreis()) + "\n"+
-				"Preis:       " + getPreis() + "\n";
-	}
+                "Preis:       " + df.format(getPreis()) + "\n";
+    }
 }

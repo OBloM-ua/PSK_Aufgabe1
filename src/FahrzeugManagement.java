@@ -14,7 +14,7 @@ public class FahrzeugManagement {
         dao = new SerializedFahrzeugDAO(filePath);
     }
 
-    public void printAll() {
+    public void  printAll() {
         List<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
         for (Fahrzeug f : fahrzeugSet) System.out.println(f);
 
