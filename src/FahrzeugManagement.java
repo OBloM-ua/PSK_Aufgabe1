@@ -1,5 +1,8 @@
+import com.sun.org.apache.bcel.internal.generic.FADD;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -10,14 +13,21 @@ import java.util.List;
 
 public class FahrzeugManagement {
     private FahrzeugDAO dao;
+
     public FahrzeugManagement(String filePath) {
         dao = new SerializedFahrzeugDAO(filePath);
     }
 
-    public void  printAll() {
+    public void printAll() {
         List<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
         for (Fahrzeug f : fahrzeugSet) System.out.println(f);
 
+    }
+
+    public void printAllarr() {
+        List<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
+        Collections.sort(fahrzeugSet, Fahrzeug.comp_by_id);
+        for (Fahrzeug f : fahrzeugSet) System.out.println(f);
     }
 
     public void print(int i) {
@@ -67,7 +77,7 @@ public class FahrzeugManagement {
         for (Fahrzeug f : dao.getFahrzeugList())
             counter += f.getPreis();
         meanprice = counter / dao.getFahrzeugList().size();
-        return BigDecimal.valueOf(meanprice).setScale(2,BigDecimal.ROUND_HALF_DOWN).doubleValue();
+        return BigDecimal.valueOf(meanprice).setScale(2, BigDecimal.ROUND_HALF_DOWN).doubleValue();
     }
 
     public List<Integer> getOldestFahrzeugId() {
@@ -78,7 +88,7 @@ public class FahrzeugManagement {
         List<Integer> retList = new ArrayList<>();
         int ageOfOldest = dao.getFahrzeugList().stream().sorted(Comparator.comparingInt(Fahrzeug::getAlter).reversed()).findFirst().get().getAlter();
 
-        for (Fahrzeug f : dao.getFahrzeugList()){
+        for (Fahrzeug f : dao.getFahrzeugList()) {
             if (f.getAlter() == ageOfOldest)
                 retList.add(f.getId());
         }

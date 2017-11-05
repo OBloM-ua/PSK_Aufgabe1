@@ -14,7 +14,7 @@ public class FahrzeugClient {
                 case "show":
                     if (args.length > 3) throw new IllegalArgumentException("Arguments ist Falsh!");
                     else if (args.length == 2) {
-                        fm.printAll();
+                        fm.printAllarr();
                     } else if (args.length == 3)
                         fm.print(Integer.parseInt(args[2]));
                     break;
