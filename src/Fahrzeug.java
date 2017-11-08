@@ -114,7 +114,7 @@ public abstract class Fahrzeug implements Serializable {
 //        }
 //    };
 
-//    public static final Comparator<Fahrzeug> COMPARE_BY_ID = (f1, f2) -> f1.getId() - f2.getId();
+//    static Comparator<Fahrzeug> COMPARE_BY_ID = (f1, f2) -> f1.getId() - f2.getId();
 
-    public static final Comparator<Fahrzeug> comp_by_id = Comparator.comparingInt(Fahrzeug::getId);
+//    static Comparator<Fahrzeug> COMPARE_BY_ID = Comparator.comparingInt(Fahrzeug::getId);
 }

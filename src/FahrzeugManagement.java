@@ -1,5 +1,3 @@
-import com.sun.org.apache.bcel.internal.generic.FADD;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,14 +18,9 @@ public class FahrzeugManagement {
 
     public void printAll() {
         List<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
+        fahrzeugSet.sort(Comparator.comparingInt(Fahrzeug::getId));
         for (Fahrzeug f : fahrzeugSet) System.out.println(f);
 
-    }
-
-    public void printAllarr() {
-        List<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
-        Collections.sort(fahrzeugSet, Fahrzeug.comp_by_id);
-        for (Fahrzeug f : fahrzeugSet) System.out.println(f);
     }
 
     public void print(int i) {
