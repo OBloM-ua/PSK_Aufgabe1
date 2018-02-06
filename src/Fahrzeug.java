@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Calendar;
-import java.util.Comparator;
 
 
 public abstract class Fahrzeug implements Serializable {

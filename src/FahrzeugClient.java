@@ -19,6 +19,10 @@ public class FahrzeugClient {
                         fm.print(Integer.parseInt(args[2]));
                     break;
 
+                case "show2":
+                    if (args.length != 4) throw new IllegalArgumentException("Arguments ist Falsh!");
+                    fm.printAllZ(Integer.parseInt(args[2]), Integer.parseInt(args[3]));
+                    break;
                 case "add":
                     if (args.length != 9 && args[2].equals("pkw")) {
                         throw new IllegalArgumentException("Error: Parameter ungueltig.");

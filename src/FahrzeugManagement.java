@@ -1,6 +1,5 @@
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,9 +17,18 @@ public class FahrzeugManagement {
 
     public void printAll() {
         List<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
-        fahrzeugSet.sort(Comparator.comparingInt(Fahrzeug::getId));
+//        fahrzeugSet.sort(Comparator.comparingInt(Fahrzeug::getId));
         for (Fahrzeug f : fahrzeugSet) System.out.println(f);
 
+    }
+
+    public void printAllZ(int i1, int i2) {
+
+        List<Fahrzeug> fahrzeugSet = dao.getFahrzeugList();
+        for (Fahrzeug f : fahrzeugSet) {
+            if (f.getPreis()> i1 && f.getPreis() < i2)
+            System.out.println(f);
+        }
     }
 
     public void print(int i) {
